@@ -8,7 +8,7 @@ import { DataAge, FreshnessLine } from '@/components/ui/freshness';
 import { ChartPanel } from '@/components/product/chart-panel';
 import { ExportLinks } from '@/components/ui/export-links';
 import { JsonLd } from '@/components/ui/json-ld';
-import { breadcrumbs, buildMetadata, siteUrl } from '@/lib/seo';
+import { breadcrumbs, buildMetadata } from '@/lib/seo';
 import { compactNumber, money, number, ratioAsPercent } from '@/lib/util/format';
 import { priceChange, summarise, volatility } from '@/lib/market/statistics';
 
@@ -93,17 +93,6 @@ export default async function ProductPage({ params }: PageProps) {
           { name: resource.name, path: `/exchange/${resource.slug}` },
         ])}
       />
-      <JsonLd
-        data={{
-          '@context': 'https://schema.org',
-          '@type': 'Product',
-          name: resource.name,
-          category: resource.category ?? undefined,
-          url: siteUrl(`/exchange/${resource.slug}`),
-          description: `Sim Companies in-game commodity with Simconomist-collected exchange price history and market analysis.`,
-        }}
-      />
-
       <nav aria-label="Breadcrumb" className="text-xs text-[var(--text-muted)]">
         <Link href="/exchange" className="hover:text-[var(--text)]">Exchange</Link>
         <span className="mx-1.5 text-[var(--text-faint)]">/</span>
