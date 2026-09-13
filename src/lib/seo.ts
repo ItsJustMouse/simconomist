@@ -43,7 +43,7 @@ export function buildMetadata(args: {
       type: args.type ?? 'website',
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       title: `${args.title} · ${SITE.name}`,
       description: args.description,
     },
@@ -71,10 +71,5 @@ export function organisation() {
     name: SITE.name,
     url: siteUrl('/'),
     description: SITE.description,
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: { '@type': 'EntryPoint', urlTemplate: `${siteUrl('/search')}?q={search_term_string}` },
-      'query-input': 'required name=search_term_string',
-    },
   };
 }

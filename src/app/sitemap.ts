@@ -16,32 +16,28 @@ export const revalidate = 3600;
  * indexed.
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const now = new Date();
-
   const staticRoutes: MetadataRoute.Sitemap = [
-    { url: siteUrl('/'), lastModified: now, changeFrequency: 'hourly', priority: 1 },
-    { url: siteUrl('/exchange'), lastModified: now, changeFrequency: 'hourly', priority: 0.9 },
-    { url: siteUrl('/market'), lastModified: now, changeFrequency: 'hourly', priority: 0.8 },
-    { url: siteUrl('/market/movers'), lastModified: now, changeFrequency: 'hourly', priority: 0.7 },
-    { url: siteUrl('/calculators'), lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
-    { url: siteUrl('/learn'), lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
-    { url: siteUrl('/methodology'), lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
-    { url: siteUrl('/status'), lastModified: now, changeFrequency: 'daily', priority: 0.4 },
-    { url: siteUrl('/about'), lastModified: now, changeFrequency: 'monthly', priority: 0.4 },
-    { url: siteUrl('/privacy'), lastModified: now, changeFrequency: 'monthly', priority: 0.3 },
-    { url: siteUrl('/terms'), lastModified: now, changeFrequency: 'monthly', priority: 0.3 },
+    { url: siteUrl('/'), changeFrequency: 'hourly', priority: 1 },
+    { url: siteUrl('/exchange'), changeFrequency: 'hourly', priority: 0.9 },
+    { url: siteUrl('/market'), changeFrequency: 'hourly', priority: 0.8 },
+    { url: siteUrl('/market/movers'), changeFrequency: 'hourly', priority: 0.7 },
+    { url: siteUrl('/calculators'), changeFrequency: 'weekly', priority: 0.8 },
+    { url: siteUrl('/learn'), changeFrequency: 'weekly', priority: 0.8 },
+    { url: siteUrl('/methodology'), changeFrequency: 'monthly', priority: 0.6 },
+    { url: siteUrl('/status'), changeFrequency: 'daily', priority: 0.4 },
+    { url: siteUrl('/about'), changeFrequency: 'monthly', priority: 0.4 },
+    { url: siteUrl('/privacy'), changeFrequency: 'monthly', priority: 0.3 },
+    { url: siteUrl('/terms'), changeFrequency: 'monthly', priority: 0.3 },
   ];
 
   const calculatorRoutes: MetadataRoute.Sitemap = BETA_CALCULATORS.map((entry) => ({
     url: siteUrl(`/calculators/${entry.slug}`),
-    lastModified: now,
     changeFrequency: 'weekly',
     priority: 0.8,
   }));
 
   const guideRoutes: MetadataRoute.Sitemap = GUIDES.map((guide) => ({
     url: siteUrl(`/learn/${guide.slug}`),
-    lastModified: now,
     changeFrequency: 'monthly',
     priority: 0.7,
   }));
@@ -54,7 +50,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const productRoutes: MetadataRoute.Sitemap = resources.map((resource) => ({
     url: siteUrl(`/exchange/${resource.slug}`),
-    lastModified: now,
     changeFrequency: 'hourly',
     priority: 0.8,
   }));

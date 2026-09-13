@@ -1,6 +1,8 @@
 import type { MetadataRoute } from 'next';
 import { siteUrl } from '@/lib/seo';
 
+export const dynamic = 'force-dynamic';
+
 /**
  * robots.txt
  *
