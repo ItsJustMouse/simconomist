@@ -48,6 +48,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        APP_URL: ${APP_URL:?APP_URL is required}
     restart: unless-stopped
     environment:
       NODE_ENV: 'production'

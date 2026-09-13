@@ -16,11 +16,12 @@ FROM node:22-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+ARG APP_URL=http://localhost:3000
 ENV NEXT_TELEMETRY_DISABLED=1
 # The build must not need production secrets. `src/lib/env.ts` skips its production
 # checks during the build phase for exactly this reason.
 ENV NODE_ENV=production
-RUN npm run build
+RUN APP_URL="${APP_URL}" npm run build
 
 FROM node:22-alpine AS runner
 WORKDIR /app
